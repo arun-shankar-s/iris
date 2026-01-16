@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #050510, #000);
+  color: #fff;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 32px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  color: #888;
+  margin-bottom: 20px;
+}
+
+/* FLOWER + GLOW SYSTEM */
+
+.flower-wrapper {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.flower-img {
+  width: 90%;
+  z-index: 3;
+  transition: all 0.4s ease;
+}
+
+/* Core glow */
+
+.glow-core {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(120, 150, 255, 0.6), transparent 70%);
+  filter: blur(25px);
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+/* Big atmospheric halo */
+
+.glow-halo {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(120, 150, 255, 0.3), transparent 70%);
+  filter: blur(50px);
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+/* CONTROLS */
+
+.controls {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  
+}
+
+label {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.story {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 6px;
+  transition: opacity 0.3s ease;
+}
+
+.reveal-btn {
+  margin-top: 24px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: none;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.reveal-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 10px;
+  background: linear-gradient(
+    to right,
+    #3b82f6 0%,
+    #3b82f6 var(--value),
+    #222 var(--value),
+    #222 100%
+  );
+  outline: none;
+}
+
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.9);
+}
+
+
+/* REVEAL CARD */
+
+.reveal-card {
+  margin-top: 30px;
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  max-width: 360px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.reveal-card h2 {
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.prediction {
+  margin-top: 12px;
+  font-size: 1rem;
+}
+
+.fade-in {
+  animation: fade 0.4s ease forwards;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Controls fade when revealed */
+
+.controls {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Reveal state (NO card) */
+
+.reveal-state {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.reveal-state h2 {
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+.trait {
+  margin-top: 6px;
+  color: #9aa7ff;
+  font-size: 0.95rem;
+}
+
+.analysis {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  color: #aaa;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.back-btn {
+  margin-top: 26px;
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.back-btn:hover {
+  color: #aaa;
+}
+
+/* Fade animation reused */
+
+.fade-in {
+  animation: fade 0.4s ease forwards;
+}

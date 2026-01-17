@@ -20,7 +20,7 @@ const revealSpecies = async () => {
   const delay = new Promise((resolve) => setTimeout(resolve, 200));
 
   try {
-    const res = await fetch("http://127.0.0.1:8000/predict", {
+    const res = await fetch("https://iris-tj2z.onrender.com/predict", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

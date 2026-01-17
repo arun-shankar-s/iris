@@ -11,9 +11,15 @@ function IrisFlower() {
   const [revealed, setRevealed] = useState(false);
   const traits = GetTrait(petal, sepal, petalWidth, sepalLength);
   const [prediction, setPrediction] = useState("");
+  const [loading, setLoading] = useState(false);
 
 
 const revealSpecies = async () => {
+  setLoading(true);
+
+  const delay = new Promise((resolve) => setTimeout(resolve, 200));
+
+  try {
     const res = await fetch("http://127.0.0.1:8000/predict", {
       method: "POST",
       headers: {
@@ -28,11 +34,6 @@ const revealSpecies = async () => {
     });
 
     const data = await res.json();
-    setPrediction(data.species);
-    setRevealed(true);
-  };
-
-    const data = await res.json();
 
     // Wait for BOTH: API + 2s delay
     await Promise.all([delay]);
@@ -44,7 +45,6 @@ const revealSpecies = async () => {
     setLoading(false);
   }
 };
-
 
   return (
     <div className="container">
@@ -141,9 +141,13 @@ const revealSpecies = async () => {
             />
           </div>
 
-          <button className="reveal-btn" onClick={revealSpecies}>
-            Reveal
-          </button>
+          <button
+  className="reveal-btn"
+  onClick={revealSpecies}
+  disabled={loading}
+>
+  {loading ? <span className="spinner"></span> : "Reveal"}
+</button>
         </div>
       )}
 
